@@ -3,8 +3,9 @@
 
 ## 使用方法
 - 安装Chrome浏览器，ChromeDriver, Python3.7 以及Selenium插件。
-- 运行代码，输入您的用户名和密码，以及您需要AC的题目。
+- 运行test.py代码，输入您的用户名和密码，以及您需要AC的题目。
 - 程序会自动拉取代码，并登录您的SJTU-OJ账号提交。
+- 运行follow.py代码，输入您的用户名和密码，会自动跟踪他人的新提交。
 
 ## 注意事项
 - 本代码运行需要安装Chrome浏览器以及ChromeDriver，Python和Selenium插件。

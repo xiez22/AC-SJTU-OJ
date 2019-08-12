@@ -34,7 +34,6 @@ try:
     actions.click(btn_login)
     actions.perform()
 
-    time.sleep(1)
     browser.get("https://acm.sjtu.edu.cn/OnlineJudge/submit")
 
     input_problem = browser.find_element(By.NAME, 'problem')
