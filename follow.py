@@ -2,6 +2,10 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
 import time
+import logging
+
+logging.basicConfig(filename="test.log", filemode="w", format="%(asctime)s %(name)s:%(levelname)s:%(message)s",
+                    datefmt="%d-%M-%Y %H:%M:%S", level=logging.INFO)
 
 # Hyper Parameters
 SLEEP_TIME = 3
@@ -31,6 +35,7 @@ actions.click(btn_login)
 actions.perform()
 
 print('登录成功！')
+logging.info('登录完成')
 
 while True:
     try:
@@ -49,16 +54,20 @@ while True:
                 print('提交的用户是', user_id)
                 if user_id == username:
                     print('无新的提交')
+                    logging.warning('无新的提交')
                     continue
                 elif user_id != '魔卡少女':
                     print('不是魔卡少女的提交')
+                    logging.log('找到非指定目标的提交')
                     continue
                 problem_to_solve = browser.find_element(
                     By.XPATH, '//*[@id="status"]/tbody/tr[1]/td[3]/a[1]').text
                 print('找到新的提交，题号是', problem_to_solve)
+                logging.log('找到新的提交，题号是'+problem_to_solve)
                 break
             else:
                 print('无新的提交')
+                logging.warning('无新的提交')
 
         print("正在获取代码......")
         browser.get(
