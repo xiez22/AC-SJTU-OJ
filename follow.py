@@ -12,6 +12,8 @@ password = input('您的密码：')
 problem_to_solve = None
 
 option = webdriver.ChromeOptions()
+option.add_argument('--headless')
+option.add_argument('--no-sandbox')
 browser = webdriver.Chrome(options=option)
 
 last_code = None
@@ -44,8 +46,12 @@ while True:
                 user_submit: str = browser.find_element(
                     By.XPATH, '//*[@id="status"]/tbody/tr[1]/td[2]').text
                 [user_id, _] = user_submit.split()
+                print('提交的用户是', user_id)
                 if user_id == username:
                     print('无新的提交')
+                    continue
+                elif user_id != '魔卡少女':
+                    print('不是魔卡少女的提交')
                     continue
                 problem_to_solve = browser.find_element(
                     By.XPATH, '//*[@id="status"]/tbody/tr[1]/td[3]/a[1]').text
